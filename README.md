@@ -27,7 +27,7 @@ After authorization you will see the todo list belonging to the logged in user
 
 ### Docker requirements
 
-1) Improve `backend/Dockerfile` with composer installation
+1) Improve `backend/Dockerfile` with composer installation and adding xdebug
 2) Front-end must run in a docker container as well (use docker-composer.yaml file and frontend/Dockerfile)
 3) Make pull request to your repository and let us know
 
@@ -42,7 +42,7 @@ After authorization you will see the todo list belonging to the logged in user
 
 1) Fix code style with eslint, prettier and stylelint
 2) Code refactoring
-3) Protect todo routes unauthorized user should not see `/` (todo list page) and redirect to `/login` page
+3) Protect todo routes where unauthorized user should not see `/` (todo list page) and should be redirected to `/login` page
 4) After refreshing the page, user must be authorized in if the user was previously logged in
 5) Write unit tests for `Todo.vue` component(s) with mocha or jest or any other testing framework
 6) Make pull request to your repository and let us know

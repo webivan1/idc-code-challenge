@@ -1,0 +1,52 @@
+version: '3.5'
+
+services:
+  idc-pgsql:
+    image: postgres:15.1
+    container_name: idc-pgsql
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: idc_user
+      POSTGRES_DB: idc_todo_list
+    networks:
+      - idc-cc
+
+  idc-php:
+    build:
+      context: ./backend
+      dockerfile: ../docker/php/Dockerfile
+    container_name: idc-php
+    volumes:
+      - ./backend:/app
+    environment:
+      APP_ENV: development
+      PG_HOST: idc-pgsql
+      PG_PORT: 27017
+      PG_USER: idc_user
+      PG_PASSWORD: secret
+      PG_DBNAME: idc_todo_list
+    depends_on:
+      - idc-pgsql
+    networks:
+      - idc-cc
+
+  idc-nginx:
+    build:
+      context: ./docker/nginx
+    container_name: idc-nginx
+    volumes:
+      - ./backend:/app
+    ports:
+      - 8086:80
+    depends_on:
+      - idc-php
+    networks:
+      - idc-cc
+
+  # idc-frontend:
+  #   ...
+
+networks:
+  idc-cc:
+    driver: bridge
