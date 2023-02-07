@@ -5,6 +5,8 @@ services:
     image: postgres:15.1
     container_name: idc-pgsql
     restart: always
+    ports:
+      - "54321:5432"
     environment:
       POSTGRES_PASSWORD: secret
       POSTGRES_USER: idc_user
@@ -20,12 +22,7 @@ services:
     volumes:
       - ./backend:/app
     environment:
-      APP_ENV: development
-      PG_HOST: idc-pgsql
-      PG_PORT: 27017
-      PG_USER: idc_user
-      PG_PASSWORD: secret
-      PG_DBNAME: idc_todo_list
+      APP_ENV: dev
     depends_on:
       - idc-pgsql
     networks:
@@ -38,7 +35,7 @@ services:
     volumes:
       - ./backend:/app
     ports:
-      - 8086:80
+      - "8086:80"
     depends_on:
       - idc-php
     networks:

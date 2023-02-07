@@ -13,7 +13,7 @@ const { state } = useStore()
         Hello {{ state.user?.username }}
       </h2>
 
-      <TodoList />
+      <TodoList :token="state.user?.token" />
     </div>
   </div>  
 </template>

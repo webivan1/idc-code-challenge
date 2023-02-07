@@ -11,7 +11,7 @@
 1) Clone project
 2) Build and run all existing docker containers
 3) Enter the back-end container or locally to install all dependencies with composer
-4) Execute migrations and fixures
+4) Execute migrations and fixtures
 5) Run the front-end locally `npm run dev`
 
 Open [the link](http://localhost:5173/)
@@ -19,11 +19,11 @@ Open [the link](http://localhost:5173/)
 Simple todo list where you can add, update or delete Todo
 Please open `/login` page and see the form where you can sign in as test user
 
-Use this credentials:
+Use these credentials:
   - Email: `test@test.com`
   - Password: `123456`
 
-After authorization you will see the todo list belonging to the logged in user
+After authorization, you will see the todo list belonging to the logged-in user
 
 ### Docker requirements
 
@@ -35,7 +35,7 @@ After authorization you will see the todo list belonging to the logged in user
 
 1) Code refactoring
 2) Write unit test with phpunit library for creating, updating and deleting a todo
-3) *Not required!* using php code sniffer and psaml
+3) **Not required!** using php code sniffer and psaml
 4) Make pull request to your repository and let us know
 
 ### Front-end requirements

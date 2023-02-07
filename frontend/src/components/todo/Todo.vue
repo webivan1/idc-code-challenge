@@ -45,6 +45,7 @@ export default {
     let addTodo = (title: any) => {
       http.put<any>('http://localhost:8086/api/todo', { title: title }, { headers: headers }).then(response => {
         actions.addTodo(response.data.todo)
+        search.value = ''
       })
     }
 
@@ -62,10 +63,10 @@ export default {
 
     let removeTodo = (id: any) => {
       http.delete<any>('http://localhost:8086/api/todo/' + id, { headers: headers }).then(response => {
-        for (var i = 0; i <= state.todoList.length; i++) {
+        for (var i = 0; i < state.todoList.length; i++) {
           const item = state.todoList[i]
           if(item.id == id) {
-            delete state.todoList[i]
+            state.todoList.splice(i, 1)
           }
         }
         actions.setTodoList(state.todoList.concat())
@@ -98,14 +99,14 @@ export default {
       </form>
     </div>
 
-    <div v-for="item of todoList" :key="item.id" class="flex flex-row mb-1">
-      <div class="flex-auto rounded-l-md shadow-md border-gray-600 p-3">
+    <div v-for="item of todoList" :key="item.id" class="flex flex-row mb-3">
+      <div class="flex-auto shadow-md border-gray-600 p-3 mr-2" :class="{ 'line-through': item.isDone }">
         {{ item.title }}
       </div>
-      <Button :color="item.isDone ? 'green' : 'dark'" class="rounded-none" @click="changeTodo(item.id, item.isDone)">
-        {{ item.isDone ? 'Done' : '?' }}
+      <Button v-if="!item.isDone" size="sm" color="dark" class="mr-2" @click="changeTodo(item.id, true)">
+        Done?
       </Button>
-      <Button size="sm" color="red" class="rounded-l-none" @click="removeTodo(item.id)">
+      <Button size="sm" color="red" @click="removeTodo(item.id)">
         Remove
       </Button>
     </div>
