@@ -10,11 +10,14 @@
 
 1) Clone project
 2) Build and run all existing docker containers
-3) Enter the back-end container or locally to install all dependencies with composer
-4) Execute migrations and fixtures
-5) Run the front-end locally `npm run dev`
+3) Generate public/private keys
+    - `bin/console lexik:jwt:generate-keypair`
+3) Execute migrations and fixtures
+    - `bin/console doctrine:migrations:migrate`
+    - `bin/console doctrine:fixtures:load -n --append`
+4) Run the front-end locally `npm run dev`
 
-Open [the link](http://localhost:5173/)
+Open [http://localhost:5173/login](http://localhost:5173/login)
 
 Simple todo list where you can add, update or delete Todo
 Please open `/login` page and see the form where you can sign in as test user
@@ -25,18 +28,13 @@ Use these credentials:
 
 After authorization, you will see the todo list belonging to the logged-in user
 
-### Docker requirements
-
-1) Improve `backend/Dockerfile` with composer installation and adding xdebug
-2) Front-end must run in a docker container as well (use docker-composer.yaml file and frontend/Dockerfile)
-3) Make pull request to your repository and let us know
-
 ### Backend requirements
 
 1) Code refactoring
-2) Write unit test with phpunit library for creating, updating and deleting a todo
-3) **Not required!** using php code sniffer and psaml
-4) Make pull request to your repository and let us know
+2) Protect routes with guards
+3) Write unit tests with phpunit library for creating, updating and deleting a todo
+4) **Not required!** using php code sniffer and psaml
+5) Make pull request to your repository and let us know
 
 ### Front-end requirements
 
@@ -46,3 +44,9 @@ After authorization, you will see the todo list belonging to the logged-in user
 4) After refreshing the page, user must be authorized in if the user was previously logged in
 5) Write unit tests for `Todo.vue` component(s) with mocha or jest or any other testing framework
 6) Make pull request to your repository and let us know
+
+### Docker requirements
+
+1) Front-end must run in a docker container as well (use docker-composer.yml file and docker/nodejs/Dockerfile)
+2) Add Xdebug for PHP
+3) Make pull request to your repository and let us know

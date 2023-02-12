@@ -39,13 +39,6 @@ class TodoFixtures extends Fixture implements OrderedFixtureInterface
         return $todo;
     }
 
-    public function getDependencies(): array
-    {
-        return [
-            UserFixtures::class
-        ];
-    }
-
     public function getOrder(): int
     {
         return 2;
