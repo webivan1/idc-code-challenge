@@ -26,9 +26,11 @@ Use these credentials:
   - Email: `test@test.com`
   - Password: `123456`
 
+
 - You can see the list of todo categories where you can select any category and see todo list belonging to selected category.
 - You can remove existing todo (Need fix)
 - You can change status of todo (Need fix)
+- You can filter todo list by title
 - You can add a new todo (Need fix)
 
 ### Do what you can do
