@@ -42,7 +42,7 @@ const addTodoAction: ActionType<{
 
 const store = reactive<StoreType>({
   user: undefined,
-  todoList: []
+  todoList: [] // @todo should we keep this globally?
 })
 
 export function useStore() {

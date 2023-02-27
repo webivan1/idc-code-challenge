@@ -17,5 +17,7 @@ import { useStore } from './store/useStore'
   </h1>
 
 
-  <router-view />
+  <div class="container mx-auto">
+    <router-view />
+  </div>
 </template>
