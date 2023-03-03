@@ -14,7 +14,7 @@ import { useRouter } from 'vue-router'
   const error = ref<any>(null);
 
   function login(): any {
-    http.post('http://localhost:8086/api/login', { username: email.value, password: password.value }).then(function (response) {
+    http.post('http://localhost:8086/api/login_check', { email: email.value, password: password.value }).then(function (response: any) {
 
       actions.setUser({
         username: email.value,
